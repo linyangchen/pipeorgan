@@ -19,7 +19,10 @@ print(noquote(paste('importing wav files from', folder, 'folder')))
 #numerical file names correspond to unique pipe IDs in pipedata
 soundfiles <- list.files(pattern = '\\.wav$', ignore.case = T)
 nclips <- length(soundfiles)
-clipid <- as.numeric(str_remove(soundfiles, ".wav"))
+
+clipid <- str_remove(soundfiles, ".wav")
+clipid <- str_remove(clipid, ".WAV")
+clipid <- as.numeric(clipid)
 
 
 sounddata    <- list(NULL)
@@ -337,7 +340,7 @@ for(i in clipid)
         box(bty = 'L')
         
         text(max(freqseq[freqcutind]), max(yvals),
-        paste('pipe', i, 'flutter')
+        paste('pipe', i)
         , pos = 2)
     
     }
