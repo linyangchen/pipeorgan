@@ -571,6 +571,21 @@ barchart(fundamp.norm ~ key | stop, data = pipedata
 )
 )
 
+
+#scatterplot of correlation between RMS and fundamental volume
+
+print(
+xyplot(fundamp.norm ~ rms | stop, pipedata
+, col = 'black'
+, aspect = 1
+, xlab = 'normalized RMS sound pressure'
+, ylab = 'normalized fundamental sound pressure'
+, par.settings = list(strip.background = list(col = 'transparent'))
+)
+)
+
+
+
 dev.off()
 embedFonts('temperament_vol.pdf')
 
