@@ -23,8 +23,15 @@ timerange <- c(4, 8)
 #cut off power spectra at which harmonic
 hcutoff <- 26
 
-#frequency cutoff for stacked spectra
+#frequency cutoff for stacked spectra 
 stackfreqcut <- 15000
+
+#frequency cutoff for spectral centroids
+centfreqcut <- 20000
+
+#no. of mel-frequency cepstral coefficients
+#(including first one which will be discarded)
+numcep <- 50
 
 #frequency band (Hz on each side) for flutter detection
 flutterband <- c(50,50)
