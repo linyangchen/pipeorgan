@@ -449,7 +449,8 @@ folder, 'folder')))
 pdf(height = 5, width = 9, 'voicing_cepstra.pdf', family = font)
 par(pty = 's', mar = c(3,3,1,1)
 , mfrow = c(1, 2))
-        
+
+
 for(i in stops)
     {
         
@@ -640,6 +641,12 @@ print(
 xyplot(scentroid ~ actual.freq.full | stop, pipedata
 , col = 'black'
 , aspect = 1
+, scales = list(
+x = list(log = 10)
+, y = list(log = 10)
+)
+, xscale.components = xscale.components.log10ticks
+, yscale.components = yscale.components.log10ticks
 , xlab = 'fundamental frequency (Hz)'
 , ylab = 'spectral centroid (Hz)'
 , par.settings = list(strip.background = list(col = 'transparent'))
@@ -654,6 +661,12 @@ print(
 xyplot(fundamp.norm ~ rms | stop, pipedata
 , col = 'black'
 , aspect = 1
+, scales = list(
+x = list(log = 10)
+, y = list(log = 10)
+)
+, xscale.components = xscale.components.log10ticks
+, yscale.components = yscale.components.log10ticks
 , xlab = 'normalized RMS sound pressure'
 , ylab = 'normalized fundamental sound pressure'
 , par.settings = list(strip.background = list(col = 'transparent'))
