@@ -508,8 +508,9 @@ pipedata$out.of.tune <- pipedata$out.of.tune - mean(pipedata$out.of.tune, na.rm 
 #root mean square error
 tuningrmse <- sqrt(mean(pipedata$out.of.tune^2, na.rm = T))
 
-
-pipedata$rms <- rms/max(rms, na.rm = T)
+pipedata$rms <- rms
+pipedata$rms.norm <- rms/max(rms, na.rm = T)
+pipedata$fundamp <- fundamps
 pipedata$fundamp.norm <- fundamps/max(fundamps, na.rm = T)
 pipedata$ampvar <- ampvar
 
@@ -564,7 +565,7 @@ densityplot(~ out.of.tune | stop, data = pipedata
 #stationary RMS volume
 
 print(
-barchart(rms ~ key | stop
+barchart(rms.norm ~ key | stop
 , data = pipedata
 , col = 'black'
 , aspect = 1
@@ -658,7 +659,7 @@ x = list(log = 10)
 
 
 print(
-xyplot(fundamp.norm ~ rms | stop, pipedata
+xyplot(fundamp.norm ~ rms.norm | stop, pipedata
 , col = 'black'
 , aspect = 1
 , scales = list(
@@ -676,7 +677,7 @@ x = list(log = 10)
 
 
 print(
-xyplot(ampvar ~ rms | stop, pipedata
+xyplot(ampvar ~ rms.norm | stop, pipedata
 , col = 'black'
 , aspect = 1
 , xlab = 'normalized RMS sound pressure'
